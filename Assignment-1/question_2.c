@@ -107,7 +107,7 @@ void mouse(int button, int state, int x, int y)
             //last or the end point of the line to be drawn
             xb = x;
             yb = y;
-            drawBRE();//DDA line drawing algorithm
+            drawBRE();//Bresenham's line drawing algorithm
         }
         drawPoint(x,y,4.0);//drawing a point
         click++;
