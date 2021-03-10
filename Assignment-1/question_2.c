@@ -30,10 +30,12 @@ void drawPoint(int x, int y, float size)
 
 void drawBRE()
 {
+    //unlike rounding off in the DDA algorithm in this algorithm we take the nearest pixel to the line
+    //from the get go and then plot that 
     int diffy = yb - ya, diffx = xb - xa, sx = 1, sy = 1;
     if(diffx < 0)
     {
-        sx = -1;
+        sx = -1;//increment values depending upon the initial and terminal point
     }
     if(diffy < 0)
     {
@@ -41,25 +43,33 @@ void drawBRE()
     }
     diffy = abs(diffy);
     diffx = abs(diffx);
-    int k = 2 * diffy - diffx;
+    int k = 2 * diffy - diffx;//decision variable initial state (always same)
+    // the equation for the decision variable is as follows 
+    //decision variable = 2*diffy(x) - 2*diffx(y)
+    // difference in decision variable = 2*diffy(xnext - x) - 2*diffx(ynext -y);
     if((diffy - diffx) > 0)
     {
-        while(ya!=yb)
+        //ie increments in y more than that of x 
+        //or slope is greater than 1
+        while(ya!=yb)//until the final point
         {
             drawPoint(xa,ya,2.0);
-            ya+=sy;
+            ya+=sy;//since slope > 1 y will always be incremented unlike x
             if(k>0)
             {
+                //if decision variable is > 0 i.e the next x point is closer than the cuurent one
+                //for the line to be drawn then x is incremented and the decision variable is updated
                 xa+=sx;
                 k -= 2*diffy;
             }
-            k += 2*diffx;
+            k += 2*diffx;//alwa
         }
     }
     else 
     {
         while(xa!=xb)
         {
+            //slope is less than zero
             drawPoint(xa,ya,2.0);
             xa+=sx;
             if(k > 0)
