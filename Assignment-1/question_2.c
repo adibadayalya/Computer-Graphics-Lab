@@ -62,7 +62,7 @@ void drawBRE()
                 xa+=sx;
                 k -= 2*diffy;
             }
-            k += 2*diffx;//alwa
+            k += 2*diffx;//always
         }
     }
     else 
