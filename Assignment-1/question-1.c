@@ -52,6 +52,7 @@ void drawAxes()
     drawPoint(m/2,0,4.0);
     glFlush();
 }
+
 void drawDDA()
 {
     drawPoint(xa,ya,4.0);
