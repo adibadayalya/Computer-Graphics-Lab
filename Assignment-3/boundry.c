@@ -1,3 +1,4 @@
+//Aditya Badayalya,510819056
 #include <stdio.h>
 #include <GL/glut.h>
 
